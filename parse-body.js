@@ -4,7 +4,7 @@ function firstStep(input) {
 }
 let pInput = "username=azure+green&password=password%21";
 let res = fifthStep(fourthStep(thirdStep(secondStep(firstStep("username=azure+green&password=password%21")))));
-console.log(parseBody(pInput));
+console.log(res);
 
 function secondStep(input) {
     // Your code here
@@ -28,10 +28,15 @@ function fifthStep(input) {
     // console.log(input);
     // return input.reduce((accumulator, currentValue) => {
     // });
-    const res = {};
-    input.forEach(pairs => {
-	res[pairs[0]] = pairs[1];
-    });
+    // const res = {};
+    // input.forEach(pairs => {
+    // 	res[pairs[0]] = pairs[1];
+    // });
+    
+    const res = input.reduce((accumulator, pairs) => {
+	accumulator[pairs[0]] = pairs[1];
+	return accumulator;
+    }, {});
     return res;
 }
 
