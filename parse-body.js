@@ -2,9 +2,6 @@ function firstStep(input) {
     // Your code here
     return input.replace("&", " ").split(" ");
 }
-let pInput = "username=azure+green&password=password%21";
-let res = fifthStep(fourthStep(thirdStep(secondStep(firstStep("username=azure+green&password=password%21")))));
-console.log(res);
 
 function secondStep(input) {
     // Your code here
