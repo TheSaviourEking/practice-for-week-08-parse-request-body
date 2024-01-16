@@ -9,7 +9,20 @@ let server;
 const http = require('http');
 
 server = http.createServer((req, res) => {
-    console.log(req.method, req.url);
+    console.log(req.method, req.url, /*req*/);
+    let reqBody = '';
+    req.on("data", (chunk) => {
+	reqBody += chunk;
+    });
+    
+    req.on("end", () => {
+	// your code for parsing the request body string into an object...
+	if (reqBody) {
+	    req.body = parseBody(reqBody);
+	}
+
+	sendFormPage(req, res); // needs to be called even if the request doesn't have a body
+    });
 });
 
 const PORT = 5000;
